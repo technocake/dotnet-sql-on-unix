@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  db:
+    #image: microsoft/mssql-server-linux:latest
+    build:
+      context: . # Build our custom image that is based on the mssql-server one instead.
+    environment:
+      - MSSQL_SA_PASSWORD=S3cr3tPassword
+      - ACCEPT_EULA=Y
+    ports:
+      - 1433:1433
+
+    # Volumes are a way of persisting file system
+    # of a docker container between runs. This ensures
+    # that when we restart the container, the database
+    # is still kept in the same state.
+    volumes:
+      - db1:/var/opt/mssql/backups
+      - db2:/var/opt/sqlserver
+      - db3:/var/opt/mssql
+volumes:
+  db1:
+  db2:
+  db3:
