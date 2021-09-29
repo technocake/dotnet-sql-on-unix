@@ -10,6 +10,16 @@ docker-compose.yml file instead.  Docker is the engine behind everything. Docker
 
 
 
+| Configuration parameter | Value          |
+| ----------------------- | -------------- |
+| server                  | localhost      |
+| port                    | 1433 (default) |
+| User                    | sa             |
+| Password                | S3cr3tPassword |
+| Database name           | DATABASE       |
+
+
+
 ## Start the database server
 
 | What to do                           | How to do it                    |
@@ -80,7 +90,7 @@ Expected result:
 ```bash
 root@78d5fffabbb9:/# /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P S3cr3tPassword -i database.sql 
 Changed database context to 'master'.
-Changed database context to 'database'.
+Changed database context to 'DATABASE'.
 
 (1 rows affected)
 
@@ -108,5 +118,17 @@ Changed database context to 'database'.
 
 (1 rows affected)
 
+```
+
+
+
+
+
+## Connect to database from application
+
+**Connectionstring**
+
+```sql
+"Server=localhost;Database=DATABASE;User Id=sa;Password=S3cr3tPassword"
 ```
 
